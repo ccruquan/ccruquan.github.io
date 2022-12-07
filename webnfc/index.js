@@ -85,10 +85,9 @@ getAddressButton.addEventListener("click", async () => {
         {
             recordType: "com:ftsafe:ibc:nft",
             id: "<rnd-num>",
-            data: action.buffer,
+            data: action,
         },
         ]});
-        await ndef.scan();
     } catch (error) {
         t.onError("Argh! " + error);
     }
