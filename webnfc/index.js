@@ -40,7 +40,7 @@ scanButton.addEventListener("click", async () => {
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
             t.onLog(`> Record count: (${message.records.length})`);
             t.onLog("> Records:");
-            for (let record of messages.records) {
+            for (let record of message.records) {
                 t.onLog("  ***************************************");
                 t.onLog("  type : ${record.recordType}");
                 t.onLog("    id : ${record.id}");
