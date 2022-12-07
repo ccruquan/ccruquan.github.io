@@ -42,9 +42,9 @@ scanButton.addEventListener("click", async () => {
             t.onLog("> Records:");
             for (let record of message.records) {
                 t.onLog("  ***************************************");
-                t.onLog("  type : ${record.recordType}");
-                t.onLog("    id : ${record.id}");
-                t.onLog("  data : ${record.data}");
+                t.onLog(`  type : ${record.recordType}`);
+                t.onLog(`    id : ${record.id}`);
+                t.onLog(`  data : ${record.data}`);
                 t.onLog("  ***************************************");
             }
         });
