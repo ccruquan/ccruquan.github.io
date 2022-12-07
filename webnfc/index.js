@@ -38,10 +38,8 @@ scanButton.addEventListener("click", async () => {
         });
 
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            t.onLog(`> Serial Number: ${serialNumber}`);
             t.onLog(`> Records: (${message.records.length})`);
-            t.onLog(`> Record: (${message.records[0].recordType})`);
-             t.onLog(`> Record: (${JSON.stringify(message.records)})`);
+            t.onLog(`> Record: (${JSON.stringify(message.records)})`);
         });
     } catch (error) {
         t.onError("Argh! " + error);
@@ -74,23 +72,12 @@ makeReadOnlyButton.addEventListener("click", async () => {
 getAddressButton.addEventListener("click", async () => {
     try {
         const action = new Uint8Array(1);
-        action[0] = 0x03;
+        action[0] = 0x02;
         const ndef = new NDEFReader();
-
-        ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            for (let record of message.records) {
-                t.onLog(`> Record: (${JSON.stringify(record)})`);
-                t.onLog(`> Record:`)
-                t.onLog(`>   type: ${record.recordType}`)
-                t.onLog(`>   id: ${record.id}`)
-                t.onLog(`>   id: ${record.data}`)
-            }
-        });
-
-        await ndef.scan();
         await ndef.write( { records: [
         {
             recordType: "com:ftsafe:ibc:nft",
+            id: "<rnd-num>",
             data: action.buffer,
         },
         ]});
